@@ -9,11 +9,14 @@
 
 
 import numpy as np
+import openpyxl
 
 # entrada de los datos de las dimensiones de la cimentación
-print("Datos de la geometría de la cimentación")
+print("Datos iniciales de la geometría de la cimentación")
 b=float(input("B[m]="))
 l=float(input("L[m]="))
+numeroCalculos=int(input("Numero de calculos="))
+incremento=float(input("Incremento de dimensión[m]="))
 
 
 # valor del coeficiente de seguridad
@@ -21,6 +24,7 @@ fs=float(input("FS= "))
 
 
 # entrada de datos por encima de cimentación
+print("Datos del terreno por encima del plano de cimentación")
 prof=float(input("Profundidad de apoyo de la cimentación [m]="))
 pesoEspecificoSup=float(input("peso especifico[m]="))
 
@@ -35,7 +39,7 @@ anguloRozamientoRad=np.deg2rad(anguloRozamiento)
 
 #Parametros de capacidad de carga para loa casos de situacion no drenada y drenada
 
-if (c==0):
+if (cohesion==0):
     Nc=(np.pi+2)
     Nq=1
     Ng=0
@@ -64,6 +68,8 @@ print("sg= ",sg)
 # valor de la carga de hundimiento
 qh=cohesion*Nc*sc+pesoEspecificoSup*prof*Nq*sq+0.5*b*pesoEspecifico*Ng*sg
 qadm=qh/fs
+
+
 
 print("Carga de hundimiento[kPa]= ",qh)
 print("Carga admisible[kPa]= ",qadm)
