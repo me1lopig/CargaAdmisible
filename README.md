@@ -1,6 +1,6 @@
 # CargaAdmisible
 
-# Cálculo de la carga admisible para una cimantación superficial
+# Cálculo de la carga admisible para una cimantación superficial rectangular
 
 # Datos
     # ancho de la cimentación->B
