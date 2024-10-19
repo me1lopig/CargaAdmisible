@@ -1,4 +1,4 @@
-# Cálculo de la carga admisible para una cimantación superficial
+# Cálculo de la carga admisible para una cimentación superficial
 
 # Datos
     # ancho de la cimentación->B
@@ -34,8 +34,18 @@ print("Datos del terreno bajo cimentación ")
 pesoEspecifico=float(input("peso especifico[m]="))
 cohesion=float(input("c[kPa]="))
 anguloRozamiento=float(input("fi[º]="))
-
 anguloRozamientoRad=np.deg2rad(anguloRozamiento)
+
+
+# Factores de correción por proximidad de talud
+print("Datos proximidad a talud")
+beta=float(input("Angulo de la pendiente[º]="))
+betaRadianes=np.deg2rad(beta)
+
+tc=np.exp(-2*betaRadianes*np.tan(anguloRozamientoRad))
+tq=1-np.sin(2*betaRadianes)
+tg=1-np.sin(2*betaRadianes)
+
 
 #Parametros de capacidad de carga para loa casos de situacion no drenada y drenada
 
@@ -49,27 +59,19 @@ else:
     Ng=1.5*(Nq-1)*np.tan(anguloRozamientoRad)
 
 
-print("Factores de capacidad de carga")
-print("Nc= ",Nc)
-print("Nq= ",Nq)
-print("Ng= ",Ng)
+for ancho in np.arange(b,b+numeroCalculos,incremento):
+    for largo in np.arange(l,l+numeroCalculos*incremento,incremento):
+        if (ancho<=largo):
+            # factores por influencia de la forma
+            sc=1+0.2*ancho/largo
+            sq=1+1.5*np.tan(anguloRozamientoRad)*ancho/largo
+            sg=1-0.3*ancho/largo
 
 
-# factores por influencia de la forma
-sc=1+0.2*b/l
-sq=1+1.5*np.tan(anguloRozamientoRad)*b/l
-sg=1-0.3*b/l
+            # valor de la carga de hundimiento
+            qh=cohesion*Nc*sc*tc+pesoEspecificoSup*prof*Nq*sq*tq+0.5*ancho*pesoEspecifico*Ng*sg*tg
+            qadm=qh/fs
 
-print("Factores de correcion por forma de la cimentación")
-print("sc= ",sc)
-print("sq= ",sq)
-print("sg= ",sg)
-
-# valor de la carga de hundimiento
-qh=cohesion*Nc*sc+pesoEspecificoSup*prof*Nq*sq+0.5*b*pesoEspecifico*Ng*sg
-qadm=qh/fs
-
-
-
-print("Carga de hundimiento[kPa]= ",qh)
-print("Carga admisible[kPa]= ",qadm)
+            print("Nc= %.2f m Nq= %.2f m Ng= %.2f "%(Nc,Nq,Ng))
+            print("sc= %.2f m sq= %.2f m sg= %.2f "%(sc,sq,sg))
+            print("B= %.2f m L= %.2f m qh= %.2f kPa qadm= %.2f kPa "%(ancho,largo,qh,qadm))
