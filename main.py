@@ -7,9 +7,12 @@
     # cohesión-> c
     # angulo de rozamiento->fi
 
+# correcciones
+    # por la forma de la cimentación
+    # por proximidad a un talud
+
 
 import numpy as np
-import openpyxl
 
 # entrada de los datos de las dimensiones de la cimentación
 print("Datos iniciales de la geometría de la cimentación")
@@ -26,7 +29,7 @@ fs=float(input("FS= "))
 # entrada de datos por encima de cimentación
 print("Datos del terreno por encima del plano de cimentación")
 prof=float(input("Profundidad de apoyo de la cimentación [m]="))
-pesoEspecificoSup=float(input("peso especifico[m]="))
+pesoEspecificoSup=float(input("peso especifico sup[m]="))
 
 
 # entrada de los datos del terreno bajo cimentacion
@@ -59,6 +62,9 @@ else:
     Ng=1.5*(Nq-1)*np.tan(anguloRozamientoRad)
 
 
+f=open('calculos.txt','w') # archivo para guardado de los resultados
+
+
 for ancho in np.arange(b,b+numeroCalculos,incremento):
     for largo in np.arange(l,l+numeroCalculos*incremento,incremento):
         if (ancho<=largo):
@@ -72,6 +78,17 @@ for ancho in np.arange(b,b+numeroCalculos,incremento):
             qh=cohesion*Nc*sc*tc+pesoEspecificoSup*prof*Nq*sq*tq+0.5*ancho*pesoEspecifico*Ng*sg*tg
             qadm=qh/fs
 
-            print("Nc= %.2f m Nq= %.2f m Ng= %.2f "%(Nc,Nq,Ng))
-            print("sc= %.2f m sq= %.2f m sg= %.2f "%(sc,sq,sg))
-            print("B= %.2f m L= %.2f m qh= %.2f kPa qadm= %.2f kPa "%(ancho,largo,qh,qadm))
+            # impresión en pantalla de los cálculos
+            #print("B= %.2f m L= %.2f m "%(ancho,largo))
+            #print("Nc= %.2f m Nq= %.2f m Ng= %.2f "%(Nc,Nq,Ng))
+            #print("sc= %.2f m sq= %.2f m sg= %.2f "%(sc,sq,sg))
+            #print("qh= %.2f kPa qadm= %.2f kPa "%(qh,qadm))
+
+            # envio al archivo de los cálculos
+            f.write("B= %.2f m L= %.2f m \n"%(ancho,largo))
+            #f.write("Nc= %.2f m Nq= %.2f m Ng= %.2f \n"%(Nc,Nq,Ng))
+            #f.write("sc= %.2f m sq= %.2f m sg= %.2f \n"%(sc,sq,sg))
+            #f.write("tc= %.2f m tq= %.2f m tg= %.2f \n"%(tc,tq,tg))
+            f.write("qh= %.2f kPa qadm= %.2f kPa \n"%(qh,qadm))
+
+f.close()
