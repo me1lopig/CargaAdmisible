@@ -36,19 +36,17 @@ def correccionForma(ancho,largo,anguloRozamiento):
 
 
 def correccionTalud(beta,anguloRozamiento):
-    
-    beta=float(input("pendiente[º]="))
 
     if beta<=anguloRozamiento/2:
 
         # paso de grados a radianes
-        betaRadianes=np.deg2rad(beta)
+        betaRad=np.deg2rad(beta)
         anguloRozamientoRad=np.deg2rad(anguloRozamiento)
 
         # calculos de los coeficientes
-        tc=np.exp(-2*betaRadianes*np.tan(anguloRozamientoRad))
-        tq=1-np.sin(2*betaRadianes)
-        tg=1-np.sin(2*betaRadianes)
+        tc=np.exp(-2*betaRad*np.tan(anguloRozamientoRad))
+        tq=1-np.sin(2*betaRad)
+        tg=1-np.sin(2*betaRad)
 
     return tc,tq,tg
 

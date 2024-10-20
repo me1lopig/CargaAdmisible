@@ -13,6 +13,7 @@
 
 
 import numpy as np
+import funciones as fn
 
 # entrada de los datos de las dimensiones de la cimentación
 print("Datos iniciales de la geometría de la cimentación")
@@ -34,10 +35,16 @@ pesoEspecificoSup=float(input("peso especifico sup[m]="))
 
 # entrada de los datos del terreno bajo cimentacion
 print("Datos del terreno bajo cimentación ")
-pesoEspecifico=float(input("peso especifico[m]="))
+pesoEspecifico=float(input("peso especifico inf[m]="))
 cohesion=float(input("c[kPa]="))
 anguloRozamiento=float(input("fi[º]="))
-anguloRozamientoRad=np.deg2rad(anguloRozamiento)
+
+anguloRozamientoRad=np.deg2rad(anguloRozamiento) # paso a radianes
+
+
+#Parametros de capacidad de carga para loa casos de situacion no drenada y drenada
+
+[Nc,Nq,Ng]=fn.factoresCapacidad(cohesion,anguloRozamiento)
 
 
 # Factores de correción por proximidad de talud
@@ -45,21 +52,13 @@ print("Datos proximidad a talud")
 beta=float(input("Angulo de la pendiente[º]="))
 betaRadianes=np.deg2rad(beta)
 
-tc=np.exp(-2*betaRadianes*np.tan(anguloRozamientoRad))
-tq=1-np.sin(2*betaRadianes)
-tg=1-np.sin(2*betaRadianes)
-
-
-#Parametros de capacidad de carga para loa casos de situacion no drenada y drenada
-
-if (cohesion==0):
-    Nc=(np.pi+2)
-    Nq=1
-    Ng=0
-else:
-    Nq=((1+np.sin(anguloRozamientoRad))/(1-np.sin(anguloRozamientoRad)))*np.exp(np.pi*np.tan(anguloRozamientoRad))
-    Nc=(Nq-1)/np.tan(anguloRozamientoRad)
-    Ng=1.5*(Nq-1)*np.tan(anguloRozamientoRad)
+if beta>=anguloRozamiento/2:
+    print('El valor de beta[º]= %.2f es mayor que la mitad del ángulo de rozamiento[º]= %.2f'%(beta,anguloRozamiento))
+    print('Se requiere estudio especial')
+    print('Cálculo interrumpido')
+    exit() # se termina el programa
+else:    
+    [tc,tq,tg]=fn.correccionTalud(beta,anguloRozamiento)
 
 
 f=open('calculos.txt','w') # archivo para guardado de los resultados
@@ -69,10 +68,8 @@ for ancho in np.arange(b,b+numeroCalculos,incremento):
     for largo in np.arange(l,l+numeroCalculos*incremento,incremento):
         if (ancho<=largo):
             # factores por influencia de la forma
-            sc=1+0.2*ancho/largo
-            sq=1+1.5*np.tan(anguloRozamientoRad)*ancho/largo
-            sg=1-0.3*ancho/largo
 
+            [sc,sq,sg]=fn.correccionForma(ancho,largo,anguloRozamiento)
 
             # valor de la carga de hundimiento
             qh=cohesion*Nc*sc*tc+pesoEspecificoSup*prof*Nq*sq*tq+0.5*ancho*pesoEspecifico*Ng*sg*tg
