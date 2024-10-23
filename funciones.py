@@ -5,6 +5,7 @@
 # factoresCapacidad->factores de capacidad de carga
 # correcciónForma->Coeficientes de corrección por la forma de la cimentación
 # correccionTalud-> Coeficientes de corrección por cercanía de la cimentación a un talud
+# densidad-> Cálculo de la densidad del terreno bajo la base de la cimentación
 
 
 # Importación de librerías
@@ -114,5 +115,16 @@ def correccionTalud(beta,anguloRozamiento):
 
     return tc,tq,tg
 
+def densidad(pesoAparente,pesoSaturado,profApoyo,b,zw):
+    # Cálculo de la densidad bajo cimentación en presencia del nivel freático
+
+    if zw>b:
+        peso=pesoAparente
+    if zw<=profApoyo:
+        peso=pesoSaturado-9.81
+    if profApoyo<zw<b:
+        peso=(pesoSaturado-9.81)+(pesoAparente-(pesoSaturado-9.81)*zw/b)
+
+    return peso
 
 
