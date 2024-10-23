@@ -116,14 +116,15 @@ def correccionTalud(beta,anguloRozamiento):
     return tc,tq,tg
 
 def densidad(pesoAparente,pesoSaturado,profApoyo,b,zw):
+    
     # Cálculo de la densidad bajo cimentación en presencia del nivel freático
 
-    if zw>b:
+    if zw>=b:
         peso=pesoAparente
     if zw<=profApoyo:
         peso=pesoSaturado-9.81
     if profApoyo<zw<b:
-        peso=(pesoSaturado-9.81)+(pesoAparente-(pesoSaturado-9.81)*zw/b)
+        peso=(pesoSaturado-9.81)+(pesoAparente-(pesoSaturado-9.81))*zw/b
 
     return peso
 
