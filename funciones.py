@@ -142,7 +142,7 @@ def correcionInclCarga(cargaVertical, horizontalB,horizontalL,fi,cohesion,b,l):
     else:
         ic=(iq*nq-1)/(nq-1)
 
-    return ic,iq,ig
+    return ic,ig,iq
 
 
 

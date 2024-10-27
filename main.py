@@ -7,9 +7,10 @@
     # cohesión-> c
     # angulo de rozamiento->fi
 
-# correcciones
+# correcciones de la fórmula general
     # por la forma de la cimentación
     # por proximidad a un talud
+    # por inclinación de la carga
 
 
 import numpy as np
@@ -61,6 +62,19 @@ else:
     [tc,tq,tg]=fn.correccionTalud(beta,anguloRozamiento)
 
 
+# corrección por inclinación de la carga sobre la cimentación
+pregunta=input("Se considera efecto de inclinación de la carga [S/N]")
+if (pregunta=='S' or pregunta=='s'):
+    print('Datos de las cargas sobre cimentación')
+    cargaV=float(input('Carga vertical N[kN]='))
+    cargaHb=float(input('Carga horizontal Hb[kN]='))
+    cargaHl=float(input('Carga horizontal HL[kN]='))
+else:
+    ic=1
+    iq=1
+    ig=1
+
+
 f=open('calculos.txt','w') # archivo para guardado de los resultados
 
 
@@ -71,8 +85,12 @@ for ancho in np.arange(b,b+numeroCalculos,incremento):
 
             [sc,sq,sg]=fn.correccionForma(ancho,largo,anguloRozamiento)
 
+            if (pregunta=='S' or pregunta=='s'):
+                [ic,iq,ig]=fn.correcionInclCarga(cargaV,cargaHb,cargaHl,anguloRozamientoRad,cohesion,ancho,largo)
+    
+
             # valor de la carga de hundimiento
-            qh=cohesion*Nc*sc*tc+pesoEspecificoSup*prof*Nq*sq*tq+0.5*ancho*pesoEspecifico*Ng*sg*tg
+            qh=cohesion*Nc*sc*tc*ic+pesoEspecificoSup*prof*Nq*sq*tq*iq+0.5*ancho*pesoEspecifico*Ng*sg*tg*ig
             qadm=qh/fs
 
             # impresión en pantalla de los cálculos
@@ -86,6 +104,7 @@ for ancho in np.arange(b,b+numeroCalculos,incremento):
             #f.write("Nc= %.2f m Nq= %.2f m Ng= %.2f \n"%(Nc,Nq,Ng))
             #f.write("sc= %.2f m sq= %.2f m sg= %.2f \n"%(sc,sq,sg))
             #f.write("tc= %.2f m tq= %.2f m tg= %.2f \n"%(tc,tq,tg))
+            #f.write("ic= %.2f m iq= %.2f m ig= %.2f \n"%(ic,iq,ig))
             f.write("qh= %.2f kPa qadm= %.2f kPa \n"%(qh,qadm))
 
 f.close()
