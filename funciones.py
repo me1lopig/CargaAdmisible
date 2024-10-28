@@ -135,7 +135,7 @@ def correcionInclCarga(cargaVertical, horizontalB,horizontalL,fi,cohesion,b,l):
 
     # cálculo de los factores
     iq=np.power((1-0.7*tanSigmaB),3)*(1-tanSigmaL)
-    ig=(1-tanSigmaB)*(1-tanSigmaL)
+    ig=np.power((1-tanSigmaB),3)*(1-tanSigmaL)
     
     if fi==0:
         ic=0.5*(1+np.sqrt(1-horizontal/(b*l*cohesion)))

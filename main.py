@@ -63,7 +63,7 @@ else:
 
 
 # corrección por inclinación de la carga sobre la cimentación
-pregunta=input("Se considera efecto de inclinación de la carga [S/N]")
+pregunta=input("Se considera efecto de inclinación de la carga [S/N] ")
 if (pregunta=='S' or pregunta=='s'):
     print('Datos de las cargas sobre cimentación')
     cargaV=float(input('Carga vertical N[kN]='))
@@ -77,6 +77,14 @@ else:
 
 f=open('calculos.txt','w') # archivo para guardado de los resultados
 
+f.write("Profundidad del plano de apoyo de la cimentación [m]= %.2f \n"%(prof))
+f.write("Peso específico por encima del apoyo [kN/m3]= %.2f \n"%(pesoEspecificoSup))
+f.write("Peso específico bajo la cimentación [kN/m3]= %.2f \n\n"%(pesoEspecifico))
+f.write("Parámetros de corte \n")
+f.write("Cohesión [kN/m2]= %.2f \n"%(cohesion))
+f.write("Ángulo de rozamiento [º]= %.2f \n\n"%(anguloRozamiento))
+f.write("Valores de los cálculos realizados \n\n")
+
 
 for ancho in np.arange(b,b+numeroCalculos,incremento):
     for largo in np.arange(l,l+numeroCalculos*incremento,incremento):
@@ -86,7 +94,7 @@ for ancho in np.arange(b,b+numeroCalculos,incremento):
             [sc,sq,sg]=fn.correccionForma(ancho,largo,anguloRozamiento)
 
             if (pregunta=='S' or pregunta=='s'):
-                [ic,iq,ig]=fn.correcionInclCarga(cargaV,cargaHb,cargaHl,anguloRozamientoRad,cohesion,ancho,largo)
+                [ic,ig,iq]=fn.correcionInclCarga(cargaV,cargaHb,cargaHl,anguloRozamiento,cohesion,ancho,largo)
     
 
             # valor de la carga de hundimiento
@@ -95,16 +103,15 @@ for ancho in np.arange(b,b+numeroCalculos,incremento):
 
             # impresión en pantalla de los cálculos
             #print("B= %.2f m L= %.2f m "%(ancho,largo))
-            #print("Nc= %.2f m Nq= %.2f m Ng= %.2f "%(Nc,Nq,Ng))
             #print("sc= %.2f m sq= %.2f m sg= %.2f "%(sc,sq,sg))
             #print("qh= %.2f kPa qadm= %.2f kPa "%(qh,qadm))
 
             # envio al archivo de los cálculos
             f.write("B= %.2f m L= %.2f m \n"%(ancho,largo))
-            #f.write("Nc= %.2f m Nq= %.2f m Ng= %.2f \n"%(Nc,Nq,Ng))
-            #f.write("sc= %.2f m sq= %.2f m sg= %.2f \n"%(sc,sq,sg))
-            #f.write("tc= %.2f m tq= %.2f m tg= %.2f \n"%(tc,tq,tg))
-            #f.write("ic= %.2f m iq= %.2f m ig= %.2f \n"%(ic,iq,ig))
-            f.write("qh= %.2f kPa qadm= %.2f kPa \n"%(qh,qadm))
+            f.write("Nc= %.2f m Nq= %.2f m Ng= %.2f \n"%(Nc,Nq,Ng))
+            f.write("sc= %.2f m sq= %.2f m sg= %.2f \n"%(sc,sq,sg))
+            f.write("tc= %.2f m tq= %.2f m tg= %.2f \n"%(tc,tq,tg))
+            f.write("ic= %.2f m iq= %.2f m ig= %.2f \n"%(ic,iq,ig))
+            f.write("qh= %.2f kPa qadm= %.2f kPa \n\n"%(qh,qadm))
 
 f.close()
