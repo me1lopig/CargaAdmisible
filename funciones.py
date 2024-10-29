@@ -101,6 +101,7 @@ def correccionForma(ancho,largo,anguloRozamiento):
 
 
 def correccionTalud(beta,cohesion,anguloRozamiento):
+    # corrección por cercanía de un talud a la cimentación
     # paso de grados a radianes de los ángulos
     betaRad=np.deg2rad(beta)
     anguloRozamientoRad=np.deg2rad(anguloRozamiento)
