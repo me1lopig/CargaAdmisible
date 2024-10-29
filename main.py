@@ -11,6 +11,8 @@
     # por la forma de la cimentación
     # por proximidad a un talud
     # por inclinación de la carga
+    # no se contempla corrección por resistencia al corte de la zona superior del apoyo
+
 
 
 import numpy as np
