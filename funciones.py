@@ -33,7 +33,7 @@ def datos_terreno():
     espesor=[]
     cotas=[]
     # valores físicos
-    pe_seco=[]
+    pe_aparente=[]
     pe_saturado=[]
     # valores elásticos
     E=[]
@@ -48,8 +48,8 @@ def datos_terreno():
         espesor[0]=0
         az=sum(espesor) # vector de espesores
         nivel_freatico=hoja.cell(row=2, column=2).value
-        pe_seco.append(row[2].value)
-        pe_seco[0]=0
+        pe_aparente.append(row[2].value)
+        pe_aparente[0]=0
         pe_saturado.append(row[3].value)
         pe_saturado[0]=0
         E.append(row[4].value)
@@ -62,7 +62,6 @@ def datos_terreno():
         fi[0]=0
 
 
-
     for i in np.arange(len(espesor)):
         cotas.append(sum(espesor[0:i+1]))
     
@@ -70,7 +69,7 @@ def datos_terreno():
     for filas in hoja.iter_cols():
         tipo_datos.append(filas[0].value)
 
-    return espesor,cotas,az,nivel_freatico,pe_seco,pe_saturado,E,poisson,cohesion,fi
+    return espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturado,E,poisson,cohesion,fi
 
 
 
@@ -101,18 +100,22 @@ def correccionForma(ancho,largo,anguloRozamiento):
     return sc,sq,sg
 
 
-def correccionTalud(beta,anguloRozamiento):
+def correccionTalud(beta,cohesion,anguloRozamiento):
+    # paso de grados a radianes de los ángulos
+    betaRad=np.deg2rad(beta)
+    anguloRozamientoRad=np.deg2rad(anguloRozamiento)
 
-    if beta<=anguloRozamiento/2:
 
-        # paso de grados a radianes
-        betaRad=np.deg2rad(beta)
-        anguloRozamientoRad=np.deg2rad(anguloRozamiento)
-
+    if anguloRozamiento>0:
         # calculos de los coeficientes
         tc=np.exp(-2*betaRad*np.tan(anguloRozamientoRad))
         tq=1-np.sin(2*betaRad)
         tg=1-np.sin(2*betaRad)
+
+    else:
+        tc=1/(2*betaRad*cohesion)
+        tq=tc
+        tg=tc
 
     return tc,tq,tg
 
