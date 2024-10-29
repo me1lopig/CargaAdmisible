@@ -1,115 +1,30 @@
-Profundidad del plano de apoyo de la cimentación [m]= 1.50 
-Peso específico por encima del apoyo [kN/m3]= 18.00 
-Peso específico bajo la cimentación [kN/m3]= 18.00 
-
-Parámetros de corte 
-Cohesión [kN/m2]= 10.00 
-Ángulo de rozamiento [º]= 25.00 
-
-Valores de los cálculos realizados 
-
 B= 1.00 m L= 1.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.20 m sq= 1.70 m sg= 0.70 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 475.13 kPa qadm= 158.38 kPa 
-
+qh= 1171.57 kPa qadm= 390.52 kPa 
 B= 1.00 m L= 1.50 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.13 m sq= 1.47 m sg= 0.80 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 429.43 kPa qadm= 143.14 kPa 
-
+qh= 1046.09 kPa qadm= 348.70 kPa 
 B= 1.00 m L= 2.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.10 m sq= 1.35 m sg= 0.85 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 406.57 kPa qadm= 135.52 kPa 
-
+qh= 983.35 kPa qadm= 327.78 kPa 
 B= 1.00 m L= 2.50 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.08 m sq= 1.28 m sg= 0.88 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 392.86 kPa qadm= 130.95 kPa 
-
+qh= 945.71 kPa qadm= 315.24 kPa 
 B= 1.00 m L= 3.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.07 m sq= 1.23 m sg= 0.90 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 383.72 kPa qadm= 127.91 kPa 
-
+qh= 920.62 kPa qadm= 306.87 kPa 
 B= 1.50 m L= 1.50 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.20 m sq= 1.70 m sg= 0.70 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 486.68 kPa qadm= 162.23 kPa 
-
+qh= 1210.80 kPa qadm= 403.60 kPa 
 B= 1.50 m L= 2.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.15 m sq= 1.52 m sg= 0.78 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 453.63 kPa qadm= 151.21 kPa 
-
+qh= 1120.89 kPa qadm= 373.63 kPa 
 B= 1.50 m L= 2.50 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.12 m sq= 1.42 m sg= 0.82 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 433.80 kPa qadm= 144.60 kPa 
-
+qh= 1066.95 kPa qadm= 355.65 kPa 
 B= 1.50 m L= 3.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.10 m sq= 1.35 m sg= 0.85 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 420.59 kPa qadm= 140.20 kPa 
-
+qh= 1030.99 kPa qadm= 343.66 kPa 
 B= 2.00 m L= 2.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.20 m sq= 1.70 m sg= 0.70 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 498.22 kPa qadm= 166.07 kPa 
-
+qh= 1250.02 kPa qadm= 416.67 kPa 
 B= 2.00 m L= 2.50 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.16 m sq= 1.56 m sg= 0.76 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 472.77 kPa qadm= 157.59 kPa 
-
+qh= 1181.46 kPa qadm= 393.82 kPa 
 B= 2.00 m L= 3.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.13 m sq= 1.47 m sg= 0.80 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 455.81 kPa qadm= 151.94 kPa 
-
+qh= 1135.75 kPa qadm= 378.58 kPa 
 B= 2.50 m L= 2.50 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.20 m sq= 1.70 m sg= 0.70 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 509.76 kPa qadm= 169.92 kPa 
-
+qh= 1289.25 kPa qadm= 429.75 kPa 
 B= 2.50 m L= 3.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.17 m sq= 1.58 m sg= 0.75 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 489.38 kPa qadm= 163.13 kPa 
-
+qh= 1234.92 kPa qadm= 411.64 kPa 
 B= 3.00 m L= 3.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.20 m sq= 1.70 m sg= 0.70 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.70 m iq= 0.72 m ig= 0.66 
-qh= 521.30 kPa qadm= 173.77 kPa 
-
+qh= 1328.48 kPa qadm= 442.83 kPa 
