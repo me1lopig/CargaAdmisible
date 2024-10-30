@@ -1,11 +1,13 @@
+# -*- coding: utf-8 -*-
+
 # Cálculo de la carga admisible para una cimentación superficial
 
 # Datos
     # ancho de la cimentación->B
     # largo de la cimentación->L
     # peso especifico de terreno bajo la cimentación
-    # cohesión-> c
-    # angulo de rozamiento->fi
+    # cohesión-> c kPa
+    # angulo de rozamiento->fi º
 
 # correcciones de la fórmula general
     # por la forma de la cimentación
@@ -63,7 +65,7 @@ else:
 
 
 # corrección por inclinación de la carga sobre la cimentación
-pregunta=input("Se considera efecto de inclinación de la carga [S/N]")
+pregunta=input("Se considera efecto de inclinación de la carga [S/N] ")
 if (pregunta=='S' or pregunta=='s'):
     print('Datos de las cargas sobre cimentación')
     cargaV=float(input('Carga vertical N[kN]='))

@@ -5,7 +5,7 @@
 # factoresCapacidad->factores de capacidad de carga
 # correcciónForma->Coeficientes de corrección por la forma de la cimentación
 # correccionTalud-> Coeficientes de corrección por cercanía de la cimentación a un talud
-# correccionInclCarga->Coeficientes de correción por inlinación de la carga
+# correccionInclCarga->Coeficientes de correción por inclinación de la carga
 # densidad-> Cálculo de la densidad del terreno bajo la base de la cimentación con nivel freático
 
 
