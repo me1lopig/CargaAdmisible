@@ -7,6 +7,8 @@
 # correccionTalud-> Coeficientes de corrección por cercanía de la cimentación a un talud
 # correccionInclCarga->Coeficientes de correción por inclinación de la carga
 # densidad-> Cálculo de la densidad del terreno bajo la base de la cimentación con nivel freático
+# tension_rectangular-> cálculo de tensiones bajo la cimentación rectangular
+# asientoa-> Calculo de asientos bajo la cimentación
 
 
 # Importación de librerías
@@ -162,5 +164,23 @@ def densidad(pesoAparente,pesoSaturado,profApoyo,b,zw):
         peso=(pesoSaturado-9.81)+(pesoAparente-(pesoSaturado-9.81))*zw/b
 
     return peso
+
+
+def tension_rectangular(b,q,x,z):
+    # b es el ancho de la carga
+    # q es la carga
+    # x,z son las coordenadas donde se calulan las tensiones
+    # calculos de los angulos
+    # los valores se calculan desde el centro de la carga
+    # ojo realmente es de tipo viga corrida
+
+    delta=np.arctan((x-b/2)/z)
+    alfa=np.arctan((x+b/2)/z)-delta
+    # cálculo de las tensiones
+    tensionz=(q/np.pi)*(alfa+np.sin(alfa)*np.cos(alfa+2*delta))
+    tensionx=(q/np.pi)*(alfa-np.sin(alfa)*np.cos(alfa+2*delta))
+    tensionxz=(q/np.pi)*(np.sin(alfa)*np.cos(alfa+2*delta))
+
+    return tensionz,tensionx,tensionxz
 
 
