@@ -14,7 +14,6 @@
 
 import numpy as np
 
-
 def asientos (E,nu,P,B,L,z):
 
     # Cálculos intermedios
@@ -26,22 +25,7 @@ def asientos (E,nu,P,B,L,z):
     f1=(1/np.pi)*(np.log((t+n)/(t-n))+n*np.log((t+1)/(t-1)))
     f2=(m/np.pi)*np.arctan(n/(t*m))
 
-    #print("Valores intermedios")
-    #print("A=",Ac)
-    #print("B=",Bc)
-    #print("m=",m)
-    #print("n=",n)
-    #print("f1=",f1)
-    #print("f2=",f2)
 
 # cálculo del asiento
 
     return P*B*(Ac*f1-Bc*f2)/(2*E)
-
-
-# llamada a la función
-for z in np.arange(0.001,10,0.5):
-
-    asiento=asientos (15000,0.5,150,1.5,2.5,z)
-    print(" El asiento a la profundidad %.2f es %.4f mm "%(z,asiento))
-
