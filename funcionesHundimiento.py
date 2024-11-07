@@ -90,7 +90,6 @@ def correcionInclCarga(cargaVertical, horizontalB,horizontalL,fi,cohesion,b,l):
     return ic,ig,iq
 
 
-
 def densidad(pesoAparente,pesoSaturado,profApoyo,b,zw):
     
     # Cálculo de la densidad bajo cimentación en presencia del nivel freático

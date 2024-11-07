@@ -8,7 +8,6 @@
     # L-> Dimensión mayor de la cimentación (m)
     # z-> Profundidad de cálculo (m)
 
- 
 
 # librerias
 

@@ -1,4 +1,7 @@
 
+# Funciones de manejo de datos
+
+
 # crea_directorio->Genera un directorio en el que guardar los cálculos
 # datos_terreno->Importa los datos incluidos en el archivo datos_terreno.xlsx
 
