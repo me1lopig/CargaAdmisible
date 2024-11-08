@@ -45,7 +45,6 @@ def asientoHarr(q,b,l,z,E,nu):
 def asientoSteimbrenner (q,b,l,z,E,nu):
     # segun la ROM 05.05 para cargas extensas tipo losa 
 
-
     # Cálculos intermedios
     Ac=1-nu**2
     Bc=1-nu-2*nu**2
@@ -62,6 +61,6 @@ def asientoSteimbrenner (q,b,l,z,E,nu):
 
 
 for z in np.arange(0,15):
-    asientoH=asientoHarr(150,1.5,1.5,z,15000,0.30)
-    asientoS=asientoSteimbrenner(150,1.5,1.5,z,15000,0.30)
+    asientoH=asientoHarr(300,1.5,1.5,z,15000,0.30)
+    asientoS=asientoSteimbrenner(300,1.5,1.5,z,15000,0.30)
     print("z[%.2f] asiento Harr =%.4f asiento Steimbrenner = %.4f"%(z,asientoH,asientoS))
