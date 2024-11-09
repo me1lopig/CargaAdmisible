@@ -1,13 +1,11 @@
-# Funciones para el cálculo de la carga admisible por hundimiento
+# Funciones para el cálculo de la carga admisible por hundimiento según la G.C.O.C
 
-# crea_directorio->Genera un directorio en el que guardar los cálculos
-# datos_terreno->Importa los datos incluidos en el archivo datos_terreno.xlsx
+
 # factoresCapacidad->factores de capacidad de carga
 # correcciónForma->Coeficientes de corrección por la forma de la cimentación
 # correccionTalud-> Coeficientes de corrección por cercanía de la cimentación a un talud
 # correccionInclCarga->Coeficientes de correción por inclinación de la carga
 # densidad-> Cálculo de la densidad del terreno bajo la base de la cimentación con nivel freático
-
 
 
 # Importación de librerías

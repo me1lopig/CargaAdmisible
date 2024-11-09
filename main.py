@@ -16,7 +16,7 @@
 
 
 import numpy as np
-import funcionesHundimiento as fn
+import funcionesFacCTE as fn
 
 # entrada de los datos de las dimensiones de la cimentación
 print("Datos iniciales de la geometría de la cimentación")

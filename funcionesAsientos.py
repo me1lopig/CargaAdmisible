@@ -38,7 +38,6 @@ def asientoSteimbrenner (q,b,l,z,E,nu):
     return q*b*(Ac*f1-Bc*f2)/(2*E)
 
 
-
 def asientoBoussinesq(q,b,l,E,nu):
     # cálculo de asientos en un semiespacio infinito elastico
 
