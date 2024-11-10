@@ -9,8 +9,7 @@
 # Importación de librerías
 import numpy as np
 import openpyxl
-import os
-from datetime import datetime
+
 
 
 def datos_terreno():
@@ -22,8 +21,8 @@ def datos_terreno():
     espesor=[]
     cotas=[]
     # valores físicos
-    pe_aparente=[]
-    pe_saturado=[]
+    pe_sup=[]
+    pe_inf=[]
     # valores elásticos
     E=[]
     poisson=[]
@@ -39,10 +38,10 @@ def datos_terreno():
         espesor[0]=0
         az=sum(espesor) # vector de espesores
         nivel_freatico=hoja.cell(row=2, column=2).value
-        pe_aparente.append(row[2].value)
-        pe_aparente[0]=0
-        pe_saturado.append(row[3].value)
-        pe_saturado[0]=0
+        pe_sup.append(row[2].value)
+        pe_sup[0]=0
+        pe_inf.append(row[3].value)
+        pe_inf[0]=0
         E.append(row[4].value)
         E[0]=0
         poisson.append(row[5].value)
@@ -60,7 +59,7 @@ def datos_terreno():
     for filas in hoja.iter_cols():
         tipo_datos.append(filas[0].value)
 
-    return espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturado,E,poisson,cohesion,fi
+    return espesor,cotas,az,nivel_freatico,pe_sup,pe_inf,E,poisson,cohesion,fi
 
 
 
