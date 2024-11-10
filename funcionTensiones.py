@@ -26,14 +26,14 @@ def tension21(q,b,l,z):
 
 def tensionWestergaard(q,b,l,z,nu):
 
-    # cálculo del incremento de presiones según el método de Westergaard
+    # cálculo del incremento de presiones según el método de Westergaard para cimentación rectangular
     # se calcula en la esquina, la función da el valor en el centro
 
     n=l*0.5/z
     m=b*0.5/z
     c=np.sqrt((1-2*nu)/(2*(1-nu)))
 
-    incrTensionz=(q*np.atan(m*n/np.sqrt(c**2+n**2+m**2)))/(2*np.pi)
+    incrTensionz=(q*np.arctan(m*n/np.sqrt(c**2+n**2+m**2)))/(2*np.pi)
 
     return incrTensionz*4
 

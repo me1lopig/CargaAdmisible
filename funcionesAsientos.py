@@ -15,6 +15,7 @@
 # librerias
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 # funciones de asientos
@@ -49,6 +50,7 @@ def asientoBoussinesq(q,b,l,E,nu):
     asiento=k*q*b*(1-nu**2)/E
 
     return asiento
+
 
 
 for z in np.arange(0.001,15):
