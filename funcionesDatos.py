@@ -27,10 +27,12 @@ def datos_terreno():
     # valores elásticos
     E=[]
     poisson=[]
-    tipo_datos=[]
     # valores de resistencia
     cohesion=[]
     fi=[]
+
+    # tipos de datos
+    tipo_datos=[]
    
     for row in hoja.iter_rows():
         espesor.append(row[0].value)
