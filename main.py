@@ -22,7 +22,7 @@ import funcionesCalculo as fc
 print("Datos iniciales de la geometría de la cimentación")
 b=float(input("B[m]="))
 l=float(input("L[m]="))
-numeroCalculos=int(input("Numero de calculos="))
+numeroCalculos=int(input("Numero de calculos por ancho de B="))
 incremento=float(input("Incremento de dimensión[m]="))
 
 

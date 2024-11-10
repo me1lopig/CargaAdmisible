@@ -3,7 +3,7 @@
     # guardadoCalculos-> almacena en un archivo txt los resultados de los cálculos
     # Todo se guarda en un solo achivo
  
-
+# -*- coding: utf-8 -*-
 
 
 def guardadoDatos(prof,pesoEspecificoSup,pesoEspecifico,cohesion,anguloRozamiento):
