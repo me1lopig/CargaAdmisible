@@ -18,6 +18,7 @@
 import numpy as np
 import funcionesDatos as fd
 import funcionesCalculo as fc
+import funcionesGuardado as fg
 
 # entrada de los datos de las dimensiones de la cimentación
 #print("Datos iniciales de la geometría de la cimentación")
@@ -33,7 +34,7 @@ prof=float(input("Profundidad de apoyo de la cimentación [m]="))
 pesoEspecificoSup=float(input("peso especifico sup[m]="))
 
 
-# entrada de los datos del terreno bajo cimentacion
+# entrada de los datosfc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecifico,b,l,prof,numeroCalculos,incremento,fs) del terreno bajo cimentacion
 print("Datos del terreno bajo cimentación ")
 pesoEspecifico=float(input("peso especifico inf[m]="))
 cohesion=float(input("c[kPa]="))
@@ -52,6 +53,9 @@ espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturada,E,poisson,cohesion,fi=fd
 b,l,forma,empotramiento,pendiente,axil,hb,hl,fs,numeroCalculos,incremento=fd.datos_cimentacion()
 
 # cálculo de la carga admisible por hundimiento
-fc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecifico,b,l,prof,numeroCalculos,incremento,fs)
+fc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecificoinf,b,l,prof,numeroCalculos,incremento,fs)
+
+# envío de datos al archivo de texto
+fg.guardadoDatos(prof,pesoEspecificoSup,pesoEspecificoinf,cohesion,anguloRozamiento)
 
 

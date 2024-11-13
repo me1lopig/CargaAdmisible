@@ -1,10 +1,11 @@
 
-# Funciones de manejo de datos
+# Funciones de obtención de datos
 
 
 # crea_directorio->Genera un directorio en el que guardar los cálculos
 # datos_terreno->Importa los datos incluidos en el archivo datos_terreno.xlsx
 # datos_cimentacion->Importa los datos incluidos en el archivo datos_cimentacion.xlsx
+
 
 # Importación de librerías
 import numpy as np
@@ -59,7 +60,7 @@ def datos_terreno():
     for filas in hoja.iter_cols():
         tipo_datos.append(filas[0].value)
 
-    return espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturada,E,poisson,cohesion,fi
+    return espesor[1],cotas[1],az,nivel_freatico,pe_aparente[1],pe_saturada[1],E[1],poisson[1],cohesion[1],fi[1]
 
 
 

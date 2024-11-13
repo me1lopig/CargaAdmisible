@@ -10,17 +10,17 @@ import funcionesFacCTE as fcte
 import funcionesGuardado as fg
 
 
-def CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecifico,b,l,prof,numeroCalculos,incremento,fs):
+def CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecificoinf,b,l,prof,beta,N,Hb,Hl,numeroCalculos,incremento,fs):
 
 
 #Parametros de capacidad de carga para loa casos de situacion no drenada y drenada
 
-    [Nc,Nq,Ng]=fcte.factoresCapacidad(cohesion,anguloRozamiento)
+    [Nc,Nq,Ng]=fcte.factoresCapacidad(anguloRozamiento)
 
 
     # Factores de correción por proximidad de talud
-    print("Datos proximidad a talud")
-    beta=float(input("Angulo de la pendiente[º]="))
+    #print("Datos proximidad a talud")
+    #beta=float(input("Angulo de la pendiente[º]="))
     betaRadianes=np.deg2rad(beta)
 
     if beta>=anguloRozamiento/2:
@@ -32,20 +32,8 @@ def CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecific
         [tc,tq,tg]=fcte.correccionTalud(beta,cohesion,anguloRozamiento)
 
 
-# corrección por inclinación de la carga sobre la cimentación
-    pregunta=input("Se considera efecto de inclinación de la carga [S/N] ")
-    if (pregunta=='S' or pregunta=='s'):
-        print('Datos de las cargas sobre cimentación')
-        cargaV=float(input('Carga vertical N[kN]='))
-        cargaHb=float(input('Carga horizontal Hb[kN]='))
-        cargaHl=float(input('Carga horizontal HL[kN]='))
-    else:
-        ic=1
-        iq=1
-        ig=1
 
-    # envío de datos al archivo de texto
-    fg.guardadoDatos(prof,pesoEspecificoSup,pesoEspecifico,cohesion,anguloRozamiento)
+ 
 
 
     for ancho in np.arange(b,b+numeroCalculos,incremento):
@@ -55,12 +43,17 @@ def CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecific
 
                 [sc,sq,sg]=fcte.correccionForma(ancho,largo,anguloRozamiento)
 
-                if (pregunta=='S' or pregunta=='s'):
-                    [ic,iq,ig]=fcte.correcionInclCarga(cargaV,cargaHb,cargaHl,anguloRozamiento,cohesion,ancho,largo)
+                if (N!=0 and Hl!=0):
+                    [ic,iq,ig]=fcte.correcionInclCarga(N,Hb,Hl,anguloRozamiento,cohesion,ancho,largo)
+                else:
+                    ic=1
+                    iq=1
+                    ig=1
+                    
     
 
             # valor de la carga de hundimiento
-                qh=cohesion*Nc*sc*tc*ic+pesoEspecificoSup*prof*Nq*sq*tq*iq+0.5*ancho*pesoEspecifico*Ng*sg*tg*ig
+                qh=cohesion*Nc*sc*tc*ic+pesoEspecificoSup*prof*Nq*sq*tq*iq+0.5*ancho*pesoEspecificoinf*Ng*sg*tg*ig
                 qadm=qh/fs
 
                 # envio al archivo de los cálculos
