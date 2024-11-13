@@ -11,7 +11,7 @@
 import numpy as np
 
 
-def factoresCapacidad (cohesion,anguloRozamiento):
+def factoresCapacidad (anguloRozamiento):
      
     anguloRozamientoRad=np.deg2rad(anguloRozamiento)
 

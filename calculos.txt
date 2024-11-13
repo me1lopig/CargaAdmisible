@@ -1,29 +1,9 @@
-Profundidad de apoyo de la cimentación 1.50 m
+Profundidad de apoyo de la cimentaciÃ³n 1.50 m
 
 
-Parámetros físicos del terreno
-peso específico terreno por encima del plano de cimentación 18.00 kN/m3 
-peso específico terreno por debajo del plano de cimentación 19.00 kN/m3 
+ParÃ¡metros fÃ­sicos del terreno
+peso especÃ­fico terreno por encima del plano de cimentaciÃ³n 18.00 kN/m3 
+peso especÃ­fico terreno por debajo del plano de cimentaciÃ³n 18.00 kN/m3 
 
 
-Parámetros de corte del terreno 
-Cohesión 10.00 kPa
-Fricción 25.00 º
-
-
-Resultado de los cálculos
-
-B= 1.50 m L= 2.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.15 m sq= 1.52 m sg= 0.78 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.79 m iq= 0.76 m ig= 0.81 
-qh= 498.38 kPa qadm= 166.13 kPa 
-
-B= 2.00 m L= 2.00 m 
-Nc= 20.72 m Nq= 10.66 m Ng= 6.76 
-sc= 1.20 m sq= 1.70 m sg= 0.70 
-tc= 0.92 m tq= 0.83 m tg= 0.83 
-ic= 0.79 m iq= 0.76 m ig= 0.81 
-qh= 547.67 kPa qadm= 182.56 kPa 
-
+ParÃ¡metros de corte del terreno 

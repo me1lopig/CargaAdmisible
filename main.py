@@ -43,13 +43,13 @@ anguloRozamientoRad=np.deg2rad(anguloRozamiento) # paso a radianes
 
 
 # valor del coeficiente de seguridad
-fs=float(input("FS= "))
+#fs=float(input("FS= "))
 
 # importación de los datos del terreno
 espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturada,E,poisson,cohesion,fi=fd.datos_terreno()
 
 # iimportación de las características de la cimentación
-b,l,forma,empotramiento,pendiente,axil,hb,hl,numeroCalculos,incremento=fd.datos_cimentacion()
+b,l,forma,empotramiento,pendiente,axil,hb,hl,fs,numeroCalculos,incremento=fd.datos_cimentacion()
 
 # cálculo de la carga admisible por hundimiento
 fc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecifico,b,l,prof,numeroCalculos,incremento,fs)
