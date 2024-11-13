@@ -79,6 +79,8 @@ def datos_cimentacion():
     hb=hoja.cell(row=2, column=7).value
     hl=hoja.cell(row=2, column=8).value
     fs=hoja.cell(row=2, column=9).value
+    nCalculos=hoja.cell(row=2, column=10).value
+    incremento=hoja.cell(row=2, column=11).value
 
 
-    return b,l,forma,empotramiento,pendiente,axil,hb,hl,fs
+    return b,l,forma,empotramiento,pendiente,axil,hb,hl,fs,nCalculos,incremento

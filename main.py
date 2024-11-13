@@ -20,11 +20,11 @@ import funcionesDatos as fd
 import funcionesCalculo as fc
 
 # entrada de los datos de las dimensiones de la cimentación
-print("Datos iniciales de la geometría de la cimentación")
-b=float(input("B[m]="))
-l=float(input("L[m]="))
-numeroCalculos=int(input("Numero de calculos por ancho de B="))
-incremento=float(input("Incremento de dimensión[m]="))
+#print("Datos iniciales de la geometría de la cimentación")
+#b=float(input("B[m]="))
+#l=float(input("L[m]="))
+#numeroCalculos=int(input("Numero de calculos por ancho de B="))
+#incremento=float(input("Incremento de dimensión[m]="))
 
 
 # entrada de datos terreno por encima de la cimentación
@@ -49,7 +49,7 @@ fs=float(input("FS= "))
 espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturada,E,poisson,cohesion,fi=fd.datos_terreno()
 
 # iimportación de las características de la cimentación
-b,l,forma,empotramiento,pendiente,axil,hb,hl=fd.datos_cimentacion()
+b,l,forma,empotramiento,pendiente,axil,hb,hl,numeroCalculos,incremento=fd.datos_cimentacion()
 
 # cálculo de la carga admisible por hundimiento
 fc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecifico,b,l,prof,numeroCalculos,incremento,fs)
