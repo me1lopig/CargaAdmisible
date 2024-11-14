@@ -20,42 +20,24 @@ import funcionesDatos as fd
 import funcionesCalculo as fc
 import funcionesGuardado as fg
 
-# entrada de los datos de las dimensiones de la cimentación
-#print("Datos iniciales de la geometría de la cimentación")
-#b=float(input("B[m]="))
-#l=float(input("L[m]="))
-#numeroCalculos=int(input("Numero de calculos por ancho de B="))
-#incremento=float(input("Incremento de dimensión[m]="))
-
-
-# entrada de datos terreno por encima de la cimentación
-print("Datos del terreno por encima del plano de cimentación")
-prof=float(input("Profundidad de apoyo de la cimentación [m]="))
-pesoEspecificoSup=float(input("peso especifico sup[m]="))
-
-
-# entrada de los datosfc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecifico,b,l,prof,numeroCalculos,incremento,fs) del terreno bajo cimentacion
-print("Datos del terreno bajo cimentación ")
-pesoEspecifico=float(input("peso especifico inf[m]="))
-cohesion=float(input("c[kPa]="))
-anguloRozamiento=float(input("fi[º]="))
-
-anguloRozamientoRad=np.deg2rad(anguloRozamiento) # paso a radianes
-
-
-# valor del coeficiente de seguridad
-#fs=float(input("FS= "))
 
 # importación de los datos del terreno
-espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturada,E,poisson,cohesion,fi=fd.datos_terreno()
+espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturada,E,poisson,cohesion,anguloRozamiento =fd.datos_terreno()
+
+anguloRozamientoRad=np.deg2rad(anguloRozamiento) # paso a radianes
 
 # iimportación de las características de la cimentación
 b,l,forma,empotramiento,pendiente,axil,hb,hl,fs,numeroCalculos,incremento=fd.datos_cimentacion()
 
+print(b,l,forma,empotramiento,pendiente,axil,hb,hl,fs,numeroCalculos,incremento)
+
+print(espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturada,E,poisson,cohesion,anguloRozamiento)
+
+
 # cálculo de la carga admisible por hundimiento
-fc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecificoinf,b,l,prof,numeroCalculos,incremento,fs)
+#fc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecificoInf,b,l,prof,numeroCalculos,incremento,fs)
 
 # envío de datos al archivo de texto
-fg.guardadoDatos(prof,pesoEspecificoSup,pesoEspecificoinf,cohesion,anguloRozamiento)
+#fg.guardadoDatos(prof,pesoEspecificoSup,pesoEspecificoInf,cohesion,anguloRozamiento)
 
 
