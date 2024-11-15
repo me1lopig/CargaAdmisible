@@ -34,6 +34,8 @@ print(b,l,forma,empotramiento,pendiente,axil,hb,hl,fs,numeroCalculos,incremento)
 print(espesor,cotas,az,nivel_freatico,pe_aparente,pe_saturada,E,poisson,cohesion,anguloRozamiento)
 
 
+
+
 # cálculo de la carga admisible por hundimiento
 #fc.CargaBrinch_Hansen(cohesion,anguloRozamiento,pesoEspecificoSup,pesoEspecificoInf,b,l,prof,numeroCalculos,incremento,fs)
 
